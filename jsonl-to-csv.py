@@ -10,7 +10,7 @@ start = time.time()
 from flatten_json import flatten
 
 #Path of jsonl file
-File_path = './data'
+File_path = './input_data'
 #reading all jsonl files
 files = [f for f in glob.glob( File_path + "**/*.jsonl", recursive=True)]
 i=0
@@ -18,7 +18,7 @@ i=0
 #write header row
 with open('output.csv', 'a' , newline='') as g:
                 writeheaders = csv.writer(g)
-                writeheaders.writerow(['id','createdAt','processedAt','updatedAt'])
+                writeheaders.writerow(['order_id','createdAt','processedAt','updatedAt'])
 for f in files:
     with open(f, 'r') as F:
         for line in F:
