@@ -16,9 +16,9 @@ files = [f for f in glob.glob( File_path + "**/*.jsonl", recursive=True)]
 i=0
 
 #write header row
-with open('output.csv', 'a' , newline='') as g:
+with open('./output_data/output.csv', 'a' , newline='') as g:
                 writeheaders = csv.writer(g)
-                writeheaders.writerow(['order_id','createdAt','processedAt','updatedAt'])
+                writeheaders.writerow(['order_id','name','createdAt','processedAt','updatedAt'])
 for f in files:
     with open(f, 'r') as F:
         for line in F:
@@ -28,7 +28,7 @@ for f in files:
             normalize_id= re.search(r'\d+', data_1['id'])
             data_1['id'] = normalize_id[0]
 #creating csv files  
-            with open('output.csv', 'a' , newline='') as f:
+            with open('./output_data/output.csv', 'a' , newline='') as f:
                 thewriter = csv.writer(f)
 #headers should be the Key values from json files that make Coulmn header
-                thewriter.writerow([data_1['id'],data_1['createdAt'],data_1['processedAt'],data_1['updatedAt']])
+                thewriter.writerow([data_1['id'],data_1['name'],data_1['createdAt'],data_1['processedAt'],data_1['updatedAt']])
